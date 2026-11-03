@@ -1,0 +1,30 @@
+name: 功能建议
+description: 提出一条新规则或新能力
+title: "[feat] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 你遇到了什么问题
+      description: 描述场景，而不是直接给方案
+      placeholder: 我的 README 有徽章但没有安装小节，工具却没提示……
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 你希望的解法
+    validations:
+      required: true
+  - type: dropdown
+    id: scope
+    attributes:
+      label: 影响范围
+      options:
+        - 新增一条检查规则
+        - 调整现有规则权重
+        - CLI / 输出格式
+        - 文档
+    validations:
+      required: true

@@ -1,0 +1,40 @@
+name: Bug 反馈
+description: 报告一个可复现的问题
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈！请尽量把复现步骤写清楚，方便维护者定位。
+  - type: input
+    id: version
+    attributes:
+      label: 版本
+      description: 运行 `python -m readmecraft --version` 的结果
+      placeholder: readmecraft 0.1.0
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      placeholder: |
+        1. 准备一份只含标题的 README.md
+        2. 运行 python -m readmecraft check README.md
+        3. 看到 ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望行为
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际行为
+      description: 建议贴上完整终端输出
+    validations:
+      required: true
