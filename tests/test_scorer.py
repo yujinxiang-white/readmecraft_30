@@ -34,6 +34,11 @@ class ScoreTest(unittest.TestCase):
         expected = sum(item.rule.weight for item in report.items if item.passed)
         self.assertEqual(report.score, expected)
 
+    def test_copying_file_counts_as_license(self):
+        text = "# demo\n\n一句足够长的项目简介，用来通过长度检查。\n\n## License\n\n见 COPYING 文件。\n"
+        report = analyze(Path("COPYING.md"), text)
+        license_item = next(item for item in report.items if item.rule.key == "license")
+        self.assertTrue(license_item.passed)
 
 if __name__ == "__main__":
     unittest.main()
