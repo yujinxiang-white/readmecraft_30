@@ -55,7 +55,7 @@ def _check_usage(text: str) -> tuple[bool, str]:
 
 
 def _check_license(text: str) -> tuple[bool, str]:
-    ok = has_section(text, "许可证", "license", "licence") and "LICENSE" in text.upper()
+    ok = has_section(text, "许可证", "license", "licence", "许可协议") and "LICENSE" in text.upper()
     return (ok, "已声明许可证" if ok else "缺少许可证小节或 LICENSE 链接")
 
 
