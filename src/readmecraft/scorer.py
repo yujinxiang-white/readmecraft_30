@@ -54,8 +54,13 @@ def _check_usage(text: str) -> tuple[bool, str]:
     return (ok, "已有使用说明与代码块" if ok else "缺少使用小节或代码块")
 
 
+LICENSE_MARKERS = ("LICENSE", "LICENCE", "COPYING")
+
+
 def _check_license(text: str) -> tuple[bool, str]:
-    ok = has_section(text, "许可证", "license", "licence", "许可协议") and "LICENSE" in text.upper()
+    upper = text.upper()
+    has_file = any(marker in upper for marker in LICENSE_MARKERS)
+    ok = has_section(text, "许可证", "license", "licence", "许可协议") and has_file
     return (ok, "已声明许可证" if ok else "缺少许可证小节或 LICENSE 链接")
 
 
